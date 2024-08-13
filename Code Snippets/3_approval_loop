@@ -1,0 +1,74 @@
+/*
+    Simulates a record that needs three approvals.  Each approval re-opens / re-issues previous approval if rejected.
+    If First approval is rejected it reopens the triggering record.  All three approvals must be approved for completion.
+*/
+
+var approval1 = false; // Initially set to false to prompt approval
+var approval2 = false; // Initially set to false to prompt approval
+var approval3 = false; // Initially set to false to prompt approval
+var recordReopened = false;
+
+var test1 = false;  // Test result for approval1
+var test2 = false;  // Test result for approval2
+var test3 = false; // Test result for approval3
+
+do {
+    recordReopened = false //solely for testing
+    // Check approval1 first
+    if (!approval1) {
+        gs.info("Asking for Approval #1");
+        approval1 = test1; // Simulate the approval process
+        
+        if (!approval1) {
+            gs.info("Approval #1 = Rejected");
+            gs.info("Re-opening the record for editing");
+            recordReopened = true;
+            test1 = true; //exists to break infinite loop in scripts-background
+        } else {
+            gs.info("Approval #1 = Approved");
+            approval2 = false; // Prompt Approval #2
+        }
+    }
+    
+    // Check approval2 next
+    if (!approval2 && approval1) { // Ensure approval1 is approved before asking for approval2
+        gs.info("Asking for Approval #2");
+        approval2 = test2; // Simulate the approval process
+        
+        if (!approval2) {
+            gs.info("Approval #2 = Rejected");
+            approval1 = false; // Re-issue Approval #1
+            test2 = true; //exists to break infinite loop in scripts-background
+        } else {
+            gs.info("Approval #2 = Approved");
+            approval3 = false; // Prompt Approval #3
+        }
+    }
+    
+    // Check approval3 last
+    if (!approval3 && approval2) { // Ensure approval2 is approved before asking for approval3
+        gs.info("Asking for Approval #3");
+        approval3 = test3; // Simulate the approval process
+        
+        if (!approval3) {
+            gs.info("Approval #3 = Rejected");
+            approval2 = false; // Re-issue Approval #2
+            test3 = true; //exists to break infinite loop in scripts-background
+        } else {
+            gs.info("Approval #3 = Approved");
+        }
+    }
+
+    gs.info("Current Status: Approval1 = " + approval1);
+    gs.info("Current Status: Approval2 = " + approval2);
+    gs.info("Current Status: Approval3 = " + approval3);
+    gs.info("Record Reopened: " + recordReopened);
+    gs.info("---------------------------------");
+
+} while (!(approval1 && approval2 && approval3));
+
+if (recordReopened) {
+    gs.info("The record has been reopened for editing due to rejection of the first approval.");
+} else {
+    gs.info("All approvals have been granted. Process complete.");
+}
