@@ -1,0 +1,16 @@
+.random-dog-widget {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.random-dog-widget h2 {
+    margin-bottom: 15px;
+}
+
+.random-dog-widget p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
