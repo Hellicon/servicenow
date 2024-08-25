@@ -1,0 +1,46 @@
+<div class="sn-widgetr">
+
+    <h1>
+        Rock Paper Scissors
+    </h1>
+
+    <div class="score-container">
+        <h3>
+            Player Score: {{data.playerScore}}
+        </h3>
+        <h3>
+            Computer Score: {{data.computerScore}}
+        </h3>
+    </div>
+
+    <div class="btn-container">
+        <button ng-click="sendData('Rock')" ng-model="data.playerChoice">
+            Rock
+        </button>
+        <button ng-click="sendData('Paper')" ng-model="data.playerChoice">
+            Paper
+        </button>
+        <button ng-click="sendData('Scissors')" ng-model="data.playerChoice">
+            Scissors
+        </button>
+    </div>
+
+    <h3 ng-if="data.computer_choice != ''">
+        Computer chose: {{data.computer_choice}}
+    </h3>
+
+    <h2 ng-if="data.win_msg != ''">
+        {{data.win_msg}}
+    </h2>
+
+    <div>
+        <button class="reset-button" ng-click="reset()" ng-if="data.playerScore != 0 || data.computerScore != 0">
+            Press To Reset Game
+        </button>
+    </div>
+
+    <div class="message-container">
+        {{c.data.message}}
+    </div>
+
+</div>

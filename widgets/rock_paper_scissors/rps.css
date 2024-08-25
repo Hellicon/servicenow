@@ -1,0 +1,124 @@
+/* Container for the entire widget */
+.sn-widget {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers items horizontally */
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Styling for the main heading */
+h1 {
+    font-size: 3em;
+    color: #007BFF;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Styling for the score container */
+.score-container {
+    display: flex;
+    justify-content: center;
+    /* Centers the score items horizontally */
+    align-items: center;
+    /* Centers the score items vertically */
+    gap: 50px;
+    /* Space between player and computer scores */
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 600px;
+    /* Optional: Limits the width for better alignment */
+}
+
+.score-container h3 {
+    font-size: 1.5em;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+    /* Ensures both scores take equal space */
+}
+
+/* Styling for the button container */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    /* Centers the buttons horizontally */
+    align-items: center;
+    /* Centers the buttons vertically */
+    gap: 20px;
+    /* Space between buttons */
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 400px;
+    /* Optional: Limits the width for better alignment */
+}
+
+.btn-container button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the computer choice message */
+h3[ng-if="data.computer_choice != ''"] {
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    /* Optional: Ensures alignment with score-container */
+}
+
+/* Styling for the win message */
+h2[ng-if="data.win_msg != ''"] {
+    font-size: 2em;
+    color: green;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    /* Optional: Ensures alignment with score-container */
+}
+
+/* Styling for the reset button */
+.reset-button {
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+    background-color: #c82333;
+}
+
+/* Styling for the message */
+.message-container {
+    margin-top: 30px;
+    font-size: 1.2em;
+    color: #555;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    /* Optional: Ensures alignment with other elements */
+}
